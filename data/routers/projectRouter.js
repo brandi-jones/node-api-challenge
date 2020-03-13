@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Projects = require("../helpers/projectModel.js");
+const Actions = require("../helpers/actionModel.js");
 
 const router = express.Router();
 
@@ -95,5 +96,39 @@ router.get('/:id/actions',  async (req, res) => {
     }
     
 })
+
+//POST a new action to a specific project
+router.post('/:id/actions', validateProjectId, (req, res) => {
+    req.body.project_id = req.params.id; //set project_id to action to associate it with a specific project
+    Actions.insert(req.body)
+        .then(response => {
+            res.status(201).json(response)
+        })
+        .catch(error => {
+            res.status(500).json({error: "Action could not be created"})
+        })
+})
+
+
+//custom middleware
+
+//validate project id -- using for POST of an action to a specific project to ensure project requested exists
+async function validateProjectId(req, res, next) {
+    try {
+        const project = await Projects.get(req.params.id);
+        
+        if (project) {
+            next();
+        }
+        else {
+            res.status(404).json({message: `Project with id ${req.params.id} could not be found`})
+        }
+    }
+    catch (err) {
+        res.status(500).json({error: "Error retrieving project", err})
+    }
+}
+
+
 
 module.exports = router;
