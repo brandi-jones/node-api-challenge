@@ -13,6 +13,6 @@ server.get('/', (req, res) => {
 
 //routers to handle endpoints
 server.use("/api/projects", projectRouter);
-//server.use("/api/actions", actionRouter); may need to add middleware here? /api/projectid/actions?
+server.use("/api/actions", actionRouter); 
 
 module.exports =  server;
