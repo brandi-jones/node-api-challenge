@@ -39,14 +39,19 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    -	Express is a web application framework that sits on top of the Node.js web server and adds extra functionality, like routing and middleware. Express middleware stack is an array of functions that you can use to get request and response objects, operate on them and trigger some action. Routing is a way to select which request handler function is executed, and it so do based on the URL visited and the HTTP method used. Routing provides a way to break an application up into smaller parts.
 
 - [ ] Describe Middleware?
+    -	Middleware is like an array of functions that get executed in the order they are introduced into the server code. There are different types of middleware as well, such as built-in middleware, third party middleware, and custom middleware. Middleware provides a way to add extra functionality to an application, as well as an easy way to add modularity to the code. 
 
 - [ ] Describe a Resource?
+    -	A resource is a set of data that a client is trying to interact with. For example, interacting with users in a database, and you interact with the user’s resource by creating endpoints for communication.
 
 - [ ] What can the API return to help clients know if a request was successful?
+    -	The api can return specific status codes so that the user will know if the request was successful or not, as well as other custom messages. (ex- http status code 201 for a successful created POST operation)
 
 - [ ] How can we partition our application into sub-applications?
+    -	Express routers are a way to split up an application into sub-applications to make it more modular and easier to maintain and reason about. That way you know exactly where all endpoints are located in the code for a particular resource. 
 
 ## Minimum Viable Product
 

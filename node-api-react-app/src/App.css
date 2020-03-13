@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.projectCard {
+  margin: 1.5rem;
+  border: 2px solid black;
+}
